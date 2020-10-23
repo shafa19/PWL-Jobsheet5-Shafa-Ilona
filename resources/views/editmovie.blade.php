@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>News</title>
+  <title>Change Data</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,10 +37,10 @@
           <li class="nav-item">
             <a class="nav-link" href="/movies">Movies</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/news/7">News</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="/manage">Manage</a>
           </li>
           <li class="nav-item dropdown">
@@ -70,41 +70,30 @@
 
       <!-- Post Content Column -->
       <div class="col-lg-8">
-
+      <br><br><br><br>
         <!-- Title -->
-        <br><br>
-        <h1 class="mt-4">{{ $movie->title }}</h1>
-
-        <!-- Author -->
-        <p class="lead">
-          credit to
-          <a href="#">Owner</a>
-        </p>
-
-        <hr>
-
-        <!-- Date/Time -->
-        <p>Worked on October 04, 2020 at 03:30 PM</p>
-
-        <hr>
-
-        <!-- Preview Image -->
-        <img class="img-fluid rounded" src="{{ $movie->poster }}" alt="">
-
-        <hr>
-
-        <!-- Post Content -->
-        <p class="lead">{{ $movie->title }}</p>
-
-        <blockquote class="blockquote">
-          <p class="mb-0">{{ $movie->news }}</p>
-
-          <footer class="blockquote-footer">Credit to
-            <cite title="Source Title">original source news</cite>
-          </footer>
-        </blockquote>
-        <hr>
-
+        <form action="/movie/update/{{$movies->id}}" method="post">
+            {{csrf_field()}} 
+            <input type="hidden" name="id" value="{{$movies->id}}"></br>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" required="required" name="title" value="{{$movies->title}}"></br>
+            </div>
+            <div class="form-group">
+                <label for="synopsis">Synopsis</label>
+                <input type="text" class="form-control" required="required" name="synopsis" value="{{$movies->synopsis}}"></br>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <input type="text" class="form-control" required="required" name="rating" value="{{$movies->rating}}"></br>
+            </div>
+            <div class="form-group">
+                <label for="review">Review</label>
+                <input type="text" class="form-control" required="required" name="review" value="{{$movies->review}}"></br>
+            </div>
+            <button type="submit" name="edit" class="btn btn-primary float-right">Change Data</button>
+        </form>
+        <br><br><br><br><br><br>
         <!-- Comments Form
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
@@ -175,19 +164,19 @@
         <!-- Categories Widget -->
         <br><br>
         <div class="card my-4">
-          <h5 class="card-header">Other News</h5>
+          <h5 class="card-header">List Movie</h5>
           <div class="card-body">
             <div class="row">
               <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
+              <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="/news/7">Parasite</a>
+                    <a href="/film/7">Parasite</a>
                   </li>
                   <li>
-                    <a href="/news/8">Searching</a>
+                    <a href="/film/8">Searching</a>
                   </li>
                   <li>
-                    <a href="/news/9">Five Feet Apart</a>
+                    <a href="/film/9">Five Feet Apart</a>
                   </li>
                 </ul>
               </div>

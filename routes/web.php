@@ -23,6 +23,13 @@
 // 	return 'Halaman artikel dengan id '.$id;
 // });
 
+// Route::get('/manage','ArticleController@index')->name('manage');
+// Route::get('/article/add','ArticleController@add');
+// Route::post('/article/create','ArticleController@create');
+// Route::get('/article/edit/{id}','ArticleController@edit');
+// Route::post('/article/update/{id}','ArticleController@update');
+// Route::get('/article/delete/{id}','ArticleController@delete');
+
 Route::get('/kuis', 'Home2Controller');
 Route::get('/movies', 'MainMovieController');
 Route::get('/film/{id}', 'MovieController');
@@ -34,3 +41,10 @@ Route::get('/', function() {
     return view('home');
 });
 Route::get('/home', 'Home2Controller');
+
+Route::get('/manage','MovieController@index')->name('manage');
+Route::get('/movie/add','MovieController@add');
+Route::post('/movie/create','MovieController@create');
+Route::get('/movie/edit/{id}','MovieController@edit');
+Route::post('/movie/update/{id}','MovieController@update');
+Route::get('/movie/delete/{id}','MovieController@delete');
