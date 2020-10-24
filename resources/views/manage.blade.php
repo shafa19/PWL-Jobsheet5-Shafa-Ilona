@@ -85,6 +85,7 @@
                 <tr>
                     <th>No</th>
                     <th>Title</th>
+                    <th>Synopsis</th>
                     <th>Rating</th>
                     <th>Review</th>
                 </tr>
@@ -94,6 +95,7 @@
                 <tr>
                     <td>{{ $a->id }}</td>
                     <td>{{ $a->title }}</td>
+                    <td>{{ $a->synopsis }}</td>
                     <td>{{ $a->rating }}</td>
                     <td>{{ $a->review }}</td>
                     <td>
