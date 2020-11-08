@@ -30,7 +30,7 @@
 // Route::post('/article/update/{id}','ArticleController@update');
 // Route::get('/article/delete/{id}','ArticleController@delete');
 
-Route::get('/kuis', 'Home2Controller');
+//Route::get('/kuis', 'Home2Controller');
 Route::get('/movies', 'MainMovieController');
 Route::get('/film/{id}', 'MovieController');
 Route::get('/news/{id}', 'NewsController');
@@ -48,3 +48,10 @@ Route::post('/movie/create','MovieController@create');
 Route::get('/movie/edit/{id}','MovieController@edit');
 Route::post('/movie/update/{id}','MovieController@update');
 Route::get('/movie/delete/{id}','MovieController@delete');
+
+Route::get('/manage-user','ManageUserController@index')->name('manage-user');
+Route::get('/user/add','ManageUserController@add');
+Route::post('/user/create','ManageUserController@create');
+Route::get('/user/edit/{id}','ManageUserController@edit');
+Route::post('/user/update/{id}','ManageUserController@update');
+Route::get('/user/delete/{id}','ManageUserController@delete');

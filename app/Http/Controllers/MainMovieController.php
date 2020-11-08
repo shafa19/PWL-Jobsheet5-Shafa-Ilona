@@ -16,4 +16,8 @@ class MainMovieController extends Controller
         return view('mainmovie')
             ->with('movie', $movie);
     }
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
 }

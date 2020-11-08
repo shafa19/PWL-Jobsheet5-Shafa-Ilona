@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Movie;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Gate;
 
 
 class MovieController extends Controller
@@ -53,5 +54,13 @@ class MovieController extends Controller
 		$movie = Movie::find($id);
 		$movie->delete();
 		return redirect('/manage');
+	}
+
+	public function __construct(){
+		//$this->middleware('auth');
+		$this->middleware(function($request, $next){
+			if(Gate::allows('manage-articles')) return $next($request);
+			abort(403, 'Anda tidak memiliki cukup hak akses');
+		});
 	}
 }

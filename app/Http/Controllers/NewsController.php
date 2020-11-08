@@ -12,5 +12,9 @@ class NewsController extends Controller
     	$movie = Movie::find($id);
     	$movie = json_decode(json_encode($movie));
     	return view('news', ['id'=> $id])->with(compact('movie'));
+	}
+	
+	public function __construct(){
+        $this->middleware('auth');
     }
 }

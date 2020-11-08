@@ -10,13 +10,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Kuis 1</title>
+  <title>Edit User</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/full-width-pics.css" rel="stylesheet">
+  <link href="css/blog-post.css" rel="stylesheet">
 
 </head>
 
@@ -31,7 +31,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
+        <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
             @can('user-display')
             <a class="nav-link" href="{{ url('/home') }}">Home</a>
             @endcan
@@ -58,7 +58,7 @@
           </li>
           <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  {{ Auth::user()->name }} <span class="caret"></span>
+                {{ Auth::user()->name }} <span class="caret"></span>
               </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -76,43 +76,39 @@
     </div>
   </nav>
 
-  <!-- Header - set the background image for the header in the line below -->
-  <header class="py-5 bg-image-full" style="background-image: url('https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');">
-    <div style="height: 200px;"></div>
-  </header>
+  <!-- Page Content -->
+  <div class="container">
 
-  <!-- Content section -->
-  <section class="py-5">
-    <div class="container">
-      <h1>Film</h1>
-      <p class="lead">Theme that I choose for this quiz is Film</p>
-      <p>Film, also called movie, motion picture or moving picture, is a visual art-form used to simulate experiences that communicate ideas, stories, perceptions, feelings, beauty, or atmosphere through the use of moving images. These images are generally accompanied by sound, and more rarely, other sensory stimulations.
-      </p>
-    </div>
-  </section>
+    <div class="row">
 
-  <!-- Image element - set the background image for the header in the line below -->
-  <div class="py-5 bg-image-full" style="background-image: url('https://images.unsplash.com/photo-1519060825752-c4832f2d400a?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');">
-    <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
-    <div style="height: 200px;"></div>
-  </div>
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+      <br><br><br><br>
+        <!-- Title -->
+        <form action="/user/update/{{$users->id}}" method="post">
+            {{csrf_field()}} 
+            <input type="hidden" name="id" value="{{$users->id}}"></br>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" required="required" name="name" value="{{$users->name}}"></br>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" required="required" name="email" value="{{$users->email}}"></br>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" required="required" name="password" value="{{$users->password}}"></br>
+            </div>
+            <div class="form-group">
+                <label for="roles">Roles (Recommended with 'User')</label>
+                <input type="text" class="form-control" required="required" name="roles" value="{{$users->roles}}"></br>
+            </div>
+            <button type="submit" name="edit" class="btn btn-primary float-right">Edit User</button>
+        </form>
+        <br><br><br><br><br><br>
 
-  <!-- Content section -->
-  <section class="py-5">
-    <div class="container">
-      <h1>Quiz 1</h1>
-      <p class="lead">Mata Kuliah Pemrograman Web Lanjut</p>
-      <p>Pada Kuis 1 ini, mahasiswa diharapkan dapat mengembangkan CMS yang telah dibuat pada tugas-tugas sebelumnya yang mencakup materi-materi mengenai controller, view, dan model.</p>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; shafailona 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

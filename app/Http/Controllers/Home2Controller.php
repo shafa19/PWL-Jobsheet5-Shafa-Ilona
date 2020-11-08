@@ -12,4 +12,8 @@ class Home2Controller extends Controller
     public function __invoke(){
     	return view('home2');
     }
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
 }
