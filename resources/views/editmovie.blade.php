@@ -85,7 +85,7 @@
       <div class="col-lg-8">
       <br><br><br><br>
         <!-- Title -->
-        <form action="/movie/update/{{$movies->id}}" method="post">
+        <form action="/movie/update/{{$movies->id}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}} 
             <input type="hidden" name="id" value="{{$movies->id}}"></br>
             <div class="form-group">
@@ -104,6 +104,12 @@
                 <label for="review">Review</label>
                 <input type="text" class="form-control" required="required" name="review" value="{{$movies->review}}"></br>
             </div>
+            <div class="form-group">
+                <label for="poster">Poster</label>
+                <input type="file" class="form-control" required="required" name="poster" value="{{$movies->poster}}"></br>
+                <img width="150px" src="{{asset('storage/'.$movies->poster)}}">
+            </div>
+            <button href="/manage" class="btn btn-primary float-left">Back</button>
             <button type="submit" name="edit" class="btn btn-primary float-right">Change Data</button>
         </form>
         <br><br><br><br><br><br>

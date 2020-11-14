@@ -85,7 +85,7 @@
       <div class="col-lg-8">
         <br><br><br><br>
         <!-- Title -->
-        <form action="/movie/create" method="post">
+        <form action="/movie/create" method="post" enctype="multipart/form-data">
             @csrf 
             <div class="form-group">
                 <label for="title">Title</label>
@@ -102,6 +102,10 @@
             <div class="form-group">
                 <label for="review">Review</label>
                 <input type="text" class="form-control" required="required" name="review"></br>
+            </div>
+            <div class="form-group">
+                <label for="poster">Poster</label>
+                <input type="file" class="form-control" required="required" name="poster"></br>
             </div>
             <button type="submit" name="add" class="btn btn-primary float-right">Add Data</button>
         </form>

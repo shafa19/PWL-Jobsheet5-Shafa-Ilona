@@ -49,6 +49,8 @@ Route::get('/movie/edit/{id}','MovieController@edit');
 Route::post('/movie/update/{id}','MovieController@update');
 Route::get('/movie/delete/{id}','MovieController@delete');
 
+Route::get('/movie/print_pdf', 'MovieController@print_pdf');
+
 Route::get('/manage-user','ManageUserController@index')->name('manage-user');
 Route::get('/user/add','ManageUserController@add');
 Route::post('/user/create','ManageUserController@create');

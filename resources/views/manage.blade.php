@@ -89,6 +89,7 @@
                 <h3>Movie Lists</h3>
             </div>
             <a href="movie/add" class="btn btn-primary">Add Data</a>
+            <a href="/movie/print_pdf" class="btn btn-primary" target="_blank">Print PDF</a>
             </br></br>
         </div>
         <!-- Title -->
