@@ -33,7 +33,8 @@
 //Route::get('/kuis', 'Home2Controller');
 Route::get('/movies', 'MainMovieController');
 Route::get('/film/{id}', 'MovieController');
-Route::get('/news/{id}', 'NewsController');
+// Route::get('/news', 'MainNewsController');
+// Route::get('/news/{id}', 'NewsController');
 
 Auth::routes();
 
@@ -51,9 +52,22 @@ Route::get('/movie/delete/{id}','MovieController@delete');
 
 Route::get('/movie/print_pdf', 'MovieController@print_pdf');
 
+
 Route::get('/manage-user','ManageUserController@index')->name('manage-user');
 Route::get('/user/add','ManageUserController@add');
 Route::post('/user/create','ManageUserController@create');
 Route::get('/user/edit/{id}','ManageUserController@edit');
 Route::post('/user/update/{id}','ManageUserController@update');
 Route::get('/user/delete/{id}','ManageUserController@delete');
+
+Route::get('/user/print_pdf', 'ManageUserController@print_pdf');
+
+
+// Route::get('/manage-news','NewsMoviesController@index')->name('manage-news');
+// Route::get('/news/add','NewsMoviesController@add');
+// Route::post('/news/create','NewsMoviesController@create');
+// Route::get('/news/edit/{id}','NewsMoviesController@edit');
+// Route::post('/news/update/{id}','NewsMoviesController@update');
+// Route::get('/news/delete/{id}','NewsMoviesController@delete');
+
+// Route::get('/news/print_pdf', 'NewsMoviesController@print_pdf');

@@ -25,13 +25,13 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand">Kuis 1 - Shafa Ilona</a>
+      <a class="navbar-brand">Movies Web</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
+          <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
             @can('user-display')
             <a class="nav-link" href="{{ url('/home') }}">Home</a>
             @endcan
@@ -41,11 +41,6 @@
             <a class="nav-link" href="{{ url('/movies') }}">Movies</a>
             @endcan
           </li>
-          <li class="nav-item {{ Route::is('news/7') ? 'active' : '' }}">
-            @can('user-display')
-            <a class="nav-link" href="{{ url('/news/7') }}">News</a>
-            @endcan
-          </li>
           <li class="nav-item {{ Route::is('manage-user') ? 'active' : '' }}">
             @can('manage-articles')
             <a class="nav-link" href="{{ route('manage-user') }}">Manage User</a>
@@ -53,23 +48,18 @@
           </li>
           <li class="nav-item {{ Route::is('manage') ? 'active' : '' }}">
             @can('manage-articles')
-            <a class="nav-link" href="{{ route('manage') }}">Manage Data</a>
+            <a class="nav-link" href="{{ route('manage') }}">Manage Movies</a>
             @endcan
           </li>
-          <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }} <span class="caret"></span>
-              </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+                {{ __('LogOut')}}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
           </li>
         </ul>
       </div>
@@ -84,9 +74,9 @@
         <br><br>
         <h1 class="my-4">Movies</h1>
         <div class="list-group">
-          <a href="/film/7" class="list-group-item">Parasite</a>
-          <a href="/film/8" class="list-group-item">Searching</a>
-          <a href="/film/9" class="list-group-item">Five Feet Apart</a>
+          @foreach($movies as $movie)
+          <a href="film/{{ $movie->id }}" class="list-group-item">{{ $movie->title }}</a>
+          @endforeach
         </div>
     </div>
       <!-- /.col-lg-3 -->
@@ -112,7 +102,7 @@
           </div>
           <div class="card-body">
             <p>{{ $movie->review }}</p>
-            <small class="text-muted">Posted by Anonymous on 05/10/20</small>
+            <small class="text-muted">Posted by Anonymous</small>
             <hr>
             
           </div>

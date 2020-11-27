@@ -2,21 +2,21 @@
 <html lang="en">
 
 <head>
-<script src="{{ asset('js/app.js') }}" defer></script>
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <script src="{{ asset('js/app.js') }}" defer></script>
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Home</title>
+  <title>Movies</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/full-width-pics.css" rel="stylesheet">
+  <link href="css/modern-business.css" rel="stylesheet">
 
 </head>
 
@@ -66,39 +66,46 @@
     </div>
   </nav>
 
-  <!-- Header - set the background image for the header in the line below -->
-  <header class="py-5 bg-image-full" style="background-image: url('https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');">
-    <div style="height: 200px;"></div>
-  </header>
+  <!-- Page Content --><br><br><br>
+  <div class="container">
 
-  <!-- Content section -->
-  <section class="py-5">
-    <div class="container">
-      <h1>Film</h1>
-      <p class="lead">Theme that I choose for this website is Film</p>
-      <p>Film, also called movie, motion picture or moving picture, is a visual art-form used to simulate experiences that communicate ideas, stories, perceptions, feelings, beauty, or atmosphere through the use of moving images. These images are generally accompanied by sound, and more rarely, other sensory stimulations.
-      The name "film" originates from the fact that photographic film (also called film stock) has historically been the medium for recording and displaying motion pictures. 
-      Many other terms exist for an individual motion-picture, including picture, picture show, moving picture, photoplay, and flick. 
-      The most common term in the United States is movie, while in Europe film is preferred. Common terms for the field in general include the big screen, the silver screen, the movies, and cinema; 
-      the last of these is commonly used, as an overarching term, in scholarly texts and critical essays. In early years, the word sheet was sometimes used instead of screen.
-      </p>
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Movies</h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Movies</a>
+      </li>
+      <li class="breadcrumb-item active">Movies Review</li>
+    </ol>
+
+    <!-- Blog Post -->
+    @foreach($movie as $a)
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <a href="{{ '/film/'.$a->id }}">
+              <img class="img-fluid rounded" src="{{ $a->poster }}" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <h2 class="card-title">{{ $a->title }}</h2>
+            <p class="card-text">{{ $a->synopsis }}</p>
+            <a href="{{ '/film/'.$a->id }}" class="btn btn-primary">Read More &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        Credits to
+        <a href="#">Content Owner</a>
+      </div>
     </div>
-  </section>
+    @endforeach
 
-  <!-- Image element - set the background image for the header in the line below -->
-  <div class="py-5 bg-image-full" style="background-image: url('https://images.unsplash.com/photo-1519060825752-c4832f2d400a?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');">
-    <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
-    <div style="height: 200px;"></div>
+    
   </div>
-
-  <!-- Content section -->
-  <section class="py-5">
-    <div class="container">
-      <h1>PWL</h1>
-      <p class="lead">Mata Kuliah Pemrograman Web Lanjut</p>
-      <p>Pada Mata Kuliah ini, mahasiswa diharapkan dapat mengembangkan CMS yang telah dibuat pada tugas-tugas sebelumnya yang mencakup materi-materi pemrograman web lanjut.</p>
-    </div>
-  </section>
+  <!-- /.container -->
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">

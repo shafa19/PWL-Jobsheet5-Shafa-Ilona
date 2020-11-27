@@ -13,7 +13,7 @@ class MainMovieController extends Controller
     	$movie = Cache::remember('movie', 60, function () {
             return Movie::all();
         });
-        return view('mainmovie')
+        return view('main-movie')
             ->with('movie', $movie);
     }
 

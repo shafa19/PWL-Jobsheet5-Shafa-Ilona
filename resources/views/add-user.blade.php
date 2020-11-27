@@ -25,13 +25,13 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand">Kuis 1 - Shafa Ilona</a>
+      <a class="navbar-brand">Movies Web</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
+          <li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
             @can('user-display')
             <a class="nav-link" href="{{ url('/home') }}">Home</a>
             @endcan
@@ -41,11 +41,6 @@
             <a class="nav-link" href="{{ url('/movies') }}">Movies</a>
             @endcan
           </li>
-          <li class="nav-item {{ Route::is('news/7') ? 'active' : '' }}">
-            @can('user-display')
-            <a class="nav-link" href="{{ url('/news/7') }}">News</a>
-            @endcan
-          </li>
           <li class="nav-item {{ Route::is('manage-user') ? 'active' : '' }}">
             @can('manage-articles')
             <a class="nav-link" href="{{ route('manage-user') }}">Manage User</a>
@@ -53,23 +48,18 @@
           </li>
           <li class="nav-item {{ Route::is('manage') ? 'active' : '' }}">
             @can('manage-articles')
-            <a class="nav-link" href="{{ route('manage') }}">Manage Data</a>
+            <a class="nav-link" href="{{ route('manage') }}">Manage Movies</a>
             @endcan
           </li>
-          <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }} <span class="caret"></span>
-              </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+                {{ __('LogOut')}}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
           </li>
         </ul>
       </div>
@@ -85,11 +75,15 @@
       <div class="col-lg-8">
         <br><br><br><br>
         <!-- Title -->
-        <form action="/user/create" method="post">
+        <form action="/user/create" method="post" enctype="multipart/form-data">
             @csrf 
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" required="required" name="name"></br>
+            </div>
+            <div class="form-group">
+                <label for="profpic">Profile Picture</label>
+                <input type="file" class="form-control" required="required" name="profpic"></br>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>

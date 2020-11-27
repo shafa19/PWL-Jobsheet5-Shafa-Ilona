@@ -11,7 +11,7 @@ class NewsController extends Controller
     public function __invoke($id){
     	$movie = Movie::find($id);
     	$movie = json_decode(json_encode($movie));
-    	return view('news', ['id'=> $id])->with(compact('movie'));
+    	return view('main-news', ['id'=> $id])->with(compact('movie'));
 	}
 	
 	public function __construct(){
